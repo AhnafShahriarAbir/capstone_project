@@ -35,7 +35,6 @@ Route::get('/register', function () {
 });
 
 
-
 Auth::routes();
 Route::post('/store','Auth\RegisterController@create');
 

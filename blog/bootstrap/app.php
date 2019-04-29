@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -10,11 +9,9 @@
 | the IoC container for the system binding all of the various parts.
 |
 */
-
 $app = new Illuminate\Foundation\Application(
-    $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
+    realpath(__DIR__ . '/../')
 );
-
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
@@ -25,22 +22,31 @@ $app = new Illuminate\Foundation\Application(
 | incoming requests to this application from both the web and CLI.
 |
 */
-
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
     App\Http\Kernel::class
 );
-
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     App\Console\Kernel::class
 );
-
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
-
+# [START] Set the storage path to the environment variable APP_STORAGE
+/*
+|--------------------------------------------------------------------------
+| Set Storage Path
+|--------------------------------------------------------------------------
+|
+| This script allows us to override the default storage location used by
+| the  application.  You may set the APP_STORAGE environment variable
+| in your .env file,  if not set the default location will be used
+|
+*/
+$app->useStoragePath(env('APP_STORAGE', base_path() . '/storage'));
+# [END]
 /*
 |--------------------------------------------------------------------------
 | Return The Application
@@ -51,5 +57,4 @@ $app->singleton(
 | from the actual running of the application and sending responses.
 |
 */
-
 return $app;
