@@ -31,50 +31,6 @@ Route::get('/cars', function () {
     return view('cars');
 });
 
-Route::group(['prefix' => 'user'], function() {
-  Route::group(['middleware' => 'guest'], function() {
-
-    Route::get('/signup', [
-      'uses' => 'UserController@getSignup',
-      'as' => 'auth.register',
-      'middleware' => 'guest'
-    ]);
-
-    Route::post('/signup', [
-      'uses' => 'UserController@postSignup',
-      'as' => 'auth.register',
-      'middleware' => 'guest'
-    ]);
-
-    Route::get('/signin', [
-      'uses' => 'UserController@getSignin',
-      'as' => 'auth.login',
-      'middleware' => 'guest'
-    ]);
-    Route::post('/signin', [
-      'uses' => 'UserController@postSignin',
-      'as' => 'auth.login',
-      'middleware' => 'guest'
-    ]);
-
-  });
-
-  Route::group(['middleware' => 'auth'], function() {
-
-    Route::get('/logout', [
-      'uses' => 'UserController@getLogout',
-      'as' => 'user.logout'
-    ]);
-
-    Route::get('/profile', [
-      'uses' => 'UserController@getProfile',
-      'as' => 'user.profile'
-    ]);
-
-  });
-
-});
-
 
 
 Auth::routes();
