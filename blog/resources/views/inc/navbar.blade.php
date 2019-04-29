@@ -19,10 +19,19 @@
       <li><a href="/contact">Contact us</a></li>
       <li><a href="/cars">Cars</a></li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> User</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          @if(Auth::check())
+            <a class="dropdown-item" href="{{ route('user.profile') }}">History</a>
+              <a class="dropdown-item" href="{{ route('user.logout') }}">Logout</a>
+          @else
+              <a class="dropdown-item" href="{{ route('auth.register') }}">Sign Up</a>
+              <a class="dropdown-item" href="{{ route('auth.login') }}">Sign In</a>
+          @endif
+        </div>
+      </li>
   </div>
 </div>
 </nav>
