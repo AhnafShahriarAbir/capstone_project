@@ -1,16 +1,15 @@
+
 runtime: php
 env: flex
 
 runtime_config:
   document_root: public
 
-skip_files:
-  - .env
-
 
 env_variables:
   APP_LOG: errorlog
   APP_KEY: base64:R0nmxIOmgTQMS27i9pIqC+v0E31bRSeziBsfr0Qeef8=base64:R0nmxIOmgTQMS27i9pIqC+v0E31bRSeziBsfr0Qeef8=
+
   CACHE_DRIVER: database
   SESSION_DRIVER: database
   ## Set these environment variables according to your CloudSQL configuration.
@@ -19,7 +18,4 @@ env_variables:
   DB_PASSWORD: password
   DB_SOCKET: "/cloudsql/capstone-project-235711:australia-southeast1:mysql-capstone"
 
-beta_settings:
-    # for Cloud SQL, set this value to the Cloud SQL connection name,
-    # e.g. "project:region:cloudsql-instance"
-    cloud_sql_instances: "capstone-project-235711:australia-southeast1:mysql-capstone"
+
