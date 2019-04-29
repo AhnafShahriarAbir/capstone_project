@@ -13,9 +13,13 @@
 
             <div id="main" class="row">
 
-            @yield('content')
+           
 
-            </div>
+        <main class="py-4">
+            @yield('content')
+        </main>
+        </div>
+
 
 
 
@@ -27,7 +31,10 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
             <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
             </script>
-            
+            <script src="{{ asset('js/app.js') }}" defer></script>
+
+    
+    
             <footer class="row">
                 @include('inc.footer')
             </footer>

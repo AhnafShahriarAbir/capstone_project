@@ -18,20 +18,40 @@
       <li><a href="/about">About us</a></li>
       <li><a href="/contact">Contact us</a></li>
       <li><a href="/cars">Cars</a></li>
-    </ul>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> User</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          @if(Auth::check())
-            <a class="dropdown-item" href="{{ route('user.profile') }}">History</a>
-              <a class="dropdown-item" href="{{ route('user.logout') }}">Logout</a>
-          @else
-              <a class="dropdown-item" href="{{ route('auth.register') }}">Sign Up</a>
-              <a class="dropdown-item" href="{{ route('auth.login') }}">Sign In</a>
+      
+      
+      @guest
+      @if (Route::has('register'))
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+              </li>
           @endif
-        </div>
-      </li>
+
+          <li class="nav-item">
+              <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+          </li>
+          
+      @else
+          <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  {{ Auth::user()->name }} <span class="caret"></span>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+              </div>
+          </li>
+      @endguest
+    </ul>
+      </div>
   </div>
 </div>
 </nav>
