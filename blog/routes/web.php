@@ -34,6 +34,11 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
+Route::get('/carinfo/{id}','CarController@show'); 
+
+Route::get('/bookcar',function() {
+   return view('bookcar');
+});
 
 
 Auth::routes();
