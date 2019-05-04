@@ -15,9 +15,11 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>
       <li><a href="/map">Map</a></li>
+      <li><a href="/cars">Cars</a></li>
+      <li><a href="/bookcar">Book car</a></li>
       <li><a href="/about">About us</a></li>
       <li><a href="/contact">Contact us</a></li>
-      <li><a href="/cars">Cars</a></li>
+      
       
       
       @guest

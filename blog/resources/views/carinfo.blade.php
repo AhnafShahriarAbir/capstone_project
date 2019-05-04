@@ -15,7 +15,6 @@
 @foreach ($cars as $car)
 <tr>
 <td>{{ $car->id }}</td>
-<td>{{$car->Description}}</td>
 <td>{{ $car->Make }}</td>
 <td>{{ $car->Model }}</td>
 <td>{{ $car->Year}}</td>

@@ -9,6 +9,11 @@ use Session;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        
+    }
+
     public function getSignup() {
         return view('auth.register');
     }

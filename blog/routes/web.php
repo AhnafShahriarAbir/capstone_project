@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\BookCar;
+use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
     return view('home');
@@ -37,10 +39,15 @@ Route::get('/register', function () {
 
 Route::get('/carinfo/{id}','CarController@show'); 
 
-Route::get('/bookcar',function() {
-   return view('bookcar');
-});
+Route::get('/bookcar','BookCarController@index');
 
+//Route::post('bookcar/fetch', 'BookCarController@fetch')->name('bookcar.fetch');
+
+Route::get('/bookcar/list', function () {
+    $make_id = Input::get('make_id');
+    $subcategories = BookCar::where('id','=',$make_id)->get();
+    return $subcategories;
+});
 
 
 Auth::routes();
