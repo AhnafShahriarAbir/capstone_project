@@ -12,7 +12,7 @@
 */
 use App\BookCar;
 use Illuminate\Support\Facades\Input;
-use Carbon\Carbon;
+
 
 Route::get('/', function () {
     return view('home');
@@ -50,11 +50,7 @@ Route::get('/bookcar/list', function () {
     return $subcategories;
 });
 
-Route::get('/bookcar/test', function () {
-    $now = Carbon::now();
-    dd($now);
-});
-
+ 
 
 Auth::routes();
 //Route::post('/store','Auth\RegisterController@create');
