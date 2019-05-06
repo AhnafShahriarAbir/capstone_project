@@ -12,6 +12,7 @@
 */
 use App\BookCar;
 use Illuminate\Support\Facades\Input;
+use Carbon\Carbon;
 
 Route::get('/', function () {
     return view('home');
@@ -47,6 +48,11 @@ Route::get('/bookcar/list', function () {
     $make_id = Input::get('make_id');
     $subcategories = BookCar::where('id','=',$make_id)->get();
     return $subcategories;
+});
+
+Route::get('/bookcar/test', function () {
+    $now = Carbon::now();
+    dd($now);
 });
 
 
