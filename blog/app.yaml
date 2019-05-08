@@ -14,6 +14,6 @@ env_variables:
   DB_DATABASE: blog
   DB_USERNAME: root
   DB_PASSWORD: password
-  DB_SOCKET: "/cloudsql/capstone-project-235711:australia-southeast1:mysql-capstone"
+  DB_SOCKET: "/cloudsql/capstone-project-239901:australia-southeast1:mysql-capstone"
 
 
