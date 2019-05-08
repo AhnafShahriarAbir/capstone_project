@@ -2,8 +2,7 @@
 
 @section('content')
   <h1>Cars</h1>
-  <p>List of cars</p>
-  <h1>Cars</h1>
+  <p>List of Cars for Booking</p>
 
 <table border = "1" width="500" cellpadding = '30px' align='center'>
 <tr >
