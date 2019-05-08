@@ -13,7 +13,7 @@
 <td>Mazda 3<a href="/carinfo/{{3}}"><img width="100px" height="100px" class="display" src="{{ asset('images\mazda32014.jpg') }}"></a></td>
 <td>Nissan Pulsar<a href="/carinfo/{{4}}"><img width="100px" height="100px" class="display" src="{{ asset('images\nissanpulsar2013.jpg') }}"></a></td>
 <td>Holden Berlina<a href="/carinfo/{{5}}"><img width="100px" height="100px" class="display" src="{{ asset('images\holdenberlina2006.jpg') }}"></a></td>
-<td>Hyundai i30<a href="/carinfo/{{5}}"><img width="100px" height="100px" class="display" src="{{ asset('images\hyundai.jpg') }}"></a></td>
+<td>Hyundai i30<a href="/carinfo/{{5}}"><img width="100px" height="100px" class="display" src="{{ asset('images\hyundai1.jpg') }}"></a></td>
 
 <td>Hyundai Kona<a href="/carinfo/{{5}}"><img width="100px" height="100px" class="display" src="{{ asset('images\hyundai2.jpg') }}"></a></td>
 
@@ -24,7 +24,7 @@
 <td>Suzuki Vitara<a href="/carinfo/{{5}}"><img width="100px" height="100px" class="display" src="{{ asset('images\suz2.jpg') }}"></a></td>
 <td>Mazda CX-3<a href="/carinfo/{{5}}"><img width="100px" height="100px" class="display" src="{{ asset('images\maz2.jpg') }}"></a></td>
 <td>Nissan Navara<a href="/carinfo/{{5}}"><img width="100px" height="100px" class="display" src="{{ asset('images\nissan2.jpg') }}"></a></td>
-<td>Holden UteSV6<a href="/carinfo/{{5}}"><img width="100px" height="100px" class="display" src="{{ asset('hol2.jpg') }}"></a></td>
+<td>Holden UteSV6<a href="/carinfo/{{5}}"><img width="100px" height="100px" class="display" src="{{ asset('images\hol2.jpg') }}"></a></td>
 <td>Mercedes Benz C63<a href="/carinfo/{{5}}"><img width="100px" height="100px" class="display" src="{{ asset('images\mer2.jpg') }}"></a></td>
 <td>Audi A3<a href="/carinfo/{{5}}"><img width="100px" height="100px" class="display" src="{{ asset('images\audi2.jpg') }}"></a></td>
 

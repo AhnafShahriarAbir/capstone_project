@@ -10,7 +10,7 @@
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:X4QymANjLyIBxLF8wK4kF2MZ950h9Byj7up/mkIKJ6E=',
+    'key' => 'base64:jmH32ewX1pAtrPTYyQ/tp84zHKnnjrAri2YlDtCZZlE=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -173,7 +173,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/Users/shahriarabir/Documents/capstone_test_samples/capstone_project/blog/storage/framework/cache/data',
+        'path' => 'C:\\Users\\mahim\\Documents\\GitHub\\capstone_project\\blog/storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -216,6 +216,7 @@
   'database' => 
   array (
     'default' => 'mysql',
+    'migrations' => 'migrations',
     'connections' => 
     array (
       'sqlite' => 
@@ -283,7 +284,6 @@
         'strict' => false,
       ),
     ),
-    'migrations' => 'migrations',
     'redis' => 
     array (
       'client' => 'predis',
@@ -316,12 +316,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/Users/shahriarabir/Documents/capstone_test_samples/capstone_project/blog/storage/app',
+        'root' => 'C:\\Users\\mahim\\Documents\\GitHub\\capstone_project\\blog/storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/Users/shahriarabir/Documents/capstone_test_samples/capstone_project/blog/storage/app/public',
+        'root' => 'C:\\Users\\mahim\\Documents\\GitHub\\capstone_project\\blog/storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -367,13 +367,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => '/Users/shahriarabir/Documents/capstone_test_samples/capstone_project/blog/storage/logs/laravel.log',
+        'path' => 'C:\\Users\\mahim\\Documents\\GitHub\\capstone_project\\blog/storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => '/Users/shahriarabir/Documents/capstone_test_samples/capstone_project/blog/storage/logs/laravel.log',
+        'path' => 'C:\\Users\\mahim\\Documents\\GitHub\\capstone_project\\blog/storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -437,7 +437,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => '/Users/shahriarabir/Documents/capstone_test_samples/capstone_project/blog/resources/views/vendor/mail',
+        0 => 'C:\\Users\\mahim\\Documents\\GitHub\\capstone_project\\blog\\resources\\views/vendor/mail',
       ),
     ),
     'log_channel' => NULL,
@@ -530,7 +530,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/Users/shahriarabir/Documents/capstone_test_samples/capstone_project/blog/storage/framework/sessions',
+    'files' => 'C:\\Users\\mahim\\Documents\\GitHub\\capstone_project\\blog/storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -550,9 +550,9 @@
   array (
     'paths' => 
     array (
-      0 => '/Users/shahriarabir/Documents/capstone_test_samples/capstone_project/blog/resources/views',
+      0 => 'C:\\Users\\mahim\\Documents\\GitHub\\capstone_project\\blog\\resources\\views',
     ),
-    'compiled' => '/Users/shahriarabir/Documents/capstone_test_samples/capstone_project/blog/storage/framework/views',
+    'compiled' => 'C:\\Users\\mahim\\Documents\\GitHub\\capstone_project\\blog\\storage\\framework\\views',
   ),
   'trustedproxy' => 
   array (
