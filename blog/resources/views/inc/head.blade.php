@@ -23,3 +23,6 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfVh4DjXDehml8bNOj0d6ph58uOLQumpA&callback=initMap"> </script>
+<script src="{{ asset('js/mapscript.js') }}" defer></script>

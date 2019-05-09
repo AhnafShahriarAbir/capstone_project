@@ -26,39 +26,9 @@
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script> 
-
-    <script>
-    $(document).ready(function(){
-        $.datepicker.setDefaults({
-            dateFormat: 'yy-mm-dd'
-            });
-                $(function(){
-                    $("#From").datepicker();
-                    $("#to").datepicker();
-                });
-
-                $('#range').click(function(){
-                    var From = $('#From').val();
-                    var to = $('#to').val();
-                    if(From != '' && to != '' && to > From)
-                    {
-                        $.ajax({
-                            url:"#",
-                        method:"POST",
-                        data:{From:From, to:to},
-                        success:function(data)
-                            {
-                            $('#purchase_order').html(data);
-                            }
-                        });
-                    }
-                    else
-                    {
-                    alert("Please Select a correct Date");
-                }
-        });
-    });
-</script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfVh4DjXDehml8bNOj0d6ph58uOLQumpA&callback=initMap"> </script>
+    
 
     </body>
 </html>
