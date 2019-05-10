@@ -42,13 +42,6 @@ Route::get('/carinfo/{id}','CarController@show');
 
 Route::get('/bookcar','BookCarController@index');
 
-//Route::post('bookcar/fetch', 'BookCarController@fetch')->name('bookcar.fetch');
-
-Route::get('/bookcar/list', function () {
-    $make_id = Input::get('make_id');
-    $subcategories = BookCar::where('id','=',$make_id)->get();
-    return $subcategories;
-});
 
  
 
@@ -70,6 +63,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'CarController@index');

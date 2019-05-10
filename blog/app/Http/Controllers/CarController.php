@@ -15,7 +15,10 @@ class CarController extends Controller
      */
     public function index()
     {
-        //
+        $cars = DB::table('cars')
+                    ->get() ->toArray();
+
+        return view('home', ['cars' => $cars]);
     }
 
     /**
