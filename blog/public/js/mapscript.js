@@ -31,19 +31,20 @@ function initMap() {
     
     //geoLocation();
   
-    // for (var i = 0; i < locations.length; i++) {
-    //   marker = newMarker(i);
-    //   addInfo(marker, locations[i][2]);
-    //   console.log(i);
-    // }
-  var carvalues = JSON.parse(document.getElementById('car').innerHTML);
-  marker = new google.maps.Marker({
-    position: new google.maps.LatLng({ lat: carvalues[0][1], lng: carvalues[0][1] }),
-    icon: 'http://maps.google.com/mapfiles/ms/micons/cabs.png',
-    map: map,
+    for (var i = 0; i < locations.length; i++) {
+      marker = newMarker(i);
+      addInfo(marker, locations[i][2]);
+      console.log(i);
+    }
 
-  });
-  console.log(carvalues[0][1]);
+  // var carvalues = JSON.parse(document.getElementById('car').innerHTML);
+  // marker = new google.maps.Marker({
+  //   position: new google.maps.LatLng({ lat: carvalues[0][1], lng: carvalues[0][1] }),
+  //   icon: 'http://maps.google.com/mapfiles/ms/micons/cabs.png',
+  //   map: map,
+
+  // });
+  // console.log(carvalues[0][1]);
     
   }
 
@@ -117,10 +118,17 @@ function newMarker(i) {
 
 function addInfo(marker, content){
   infowindow = new google.maps.InfoWindow({
-    content: content
+    content: '<p> Title '+
+             content +
+             '</p> ' +
+      '<button onclick="myFunction();">Book</button>'
   });
    marker.addListener('click', function() {
     infowindow.open(map, marker);
   });
+}
+
+function myFunction() {
+  window.location='/login';
 }
 

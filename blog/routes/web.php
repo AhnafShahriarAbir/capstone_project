@@ -43,7 +43,6 @@ Route::get('/carinfo/{id}','CarController@show');
 Route::get('/bookcar','BookCarController@index');
 
 
- 
 
 Auth::routes();
 //Route::post('/store','Auth\RegisterController@create');
@@ -64,3 +63,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'CarController@index');
+Route::get('/home', 'CarController@index');

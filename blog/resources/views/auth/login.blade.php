@@ -47,10 +47,14 @@
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
+                                    <a class="btn btn-link" href="{{ route('register') }}">
+                                         {{ __('Sign Up ') }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
+                        
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
