@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
+use Stripe\Stripe;
+use Stripe\Charge;
 use App\Http\Controllers\Controller;
-
+use App\Car;
 class CarController extends Controller
 {
     /**
@@ -15,10 +17,9 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = DB::table('cars')
-                    ->get() ->toArray();
+        $cars = Car::all();
 
-        return view('home', ['cars' => $cars]);
+        return view('cars.index', ['cars' => $cars]);
     }
 
     /**

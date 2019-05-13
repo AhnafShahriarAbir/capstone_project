@@ -60,7 +60,12 @@ Auth::routes();
 //   'uses' => 'MainController@doLogout'
 // ));
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'CarController@index');
+Route::get('/', [
+  'uses' => 'CarController@Index',
+  'as' => 'car.index'
+]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/', 'CarController@index');
 Route::get('/home', 'CarController@index');
