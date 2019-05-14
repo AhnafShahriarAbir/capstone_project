@@ -24,7 +24,6 @@
             </div>
             <div class="card-body">
               <h5 class="card-title">{{ $car->Make }} {{ $car->Model }}</h5>
-              
               <div class="float-right Price">AU ${{ $car->Price }}</div>
               <!--<p class="card-text description">{{ $car->description }}</p>-->
               <div class="clearfix">

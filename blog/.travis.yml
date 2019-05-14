@@ -8,3 +8,17 @@ before_script:
   - mysql -e 'create database blog;'
   - composer self-update
   - composer install --no-interaction
+
+script:
+  - vendor/bin/phpunit
+  
+services:
+  - mysql
+
+cache:
+  directories:
+    - node_modules
+    - vendor
+    
+env:
+  - TRAVIS_NODE_VERSION="4"
