@@ -19,7 +19,7 @@ class CarController extends Controller
     {
         $cars = Car::all();
 
-        return view('cars.index', ['cars' => $cars]);
+        return view('map', ['cars' => $cars]);
     }
 
     /**

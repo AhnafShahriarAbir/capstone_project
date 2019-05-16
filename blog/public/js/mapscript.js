@@ -10,8 +10,6 @@ var locations = [
   [-37.626389,144.9645 ,"H "],
   [-37.749389, 144.9645 ,"I "],
  
-  // { lat:  },
-  // { lat:  },
   // { lat: -37.909389, lng: 144.7452 },
   // { lat: -37.609389, lng: 144.9345 },
   // { lat: , lng:  },
@@ -31,21 +29,11 @@ function initMap() {
     
     //geoLocation();
   
-    for (var i = 0; i < locations.length; i++) {
+    for (var i = 0; i < locations.length; ++i) {
       marker = newMarker(i);
       addInfo(marker, locations[i][2]);
       console.log(i);
-    }
-
-  // var carvalues = JSON.parse(document.getElementById('car').innerHTML);
-  // marker = new google.maps.Marker({
-  //   position: new google.maps.LatLng({ lat: carvalues[0][1], lng: carvalues[0][1] }),
-  //   icon: 'http://maps.google.com/mapfiles/ms/micons/cabs.png',
-  //   map: map,
-
-  // });
-  // console.log(carvalues[0][1]);
-    
+    }    
   }
 
 
@@ -82,30 +70,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-
-function toggleBounce() {
-  if (marker.getAnimation() !== null) {
-    marker.setAnimation(null);
-  } else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  }
-}
-
-// function newMarker(){
-//   var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-//   //for (var i = 0; i < locations.length; i++) {
-//     marker = new google.maps.Marker({
-//       position: new google.maps.LatLng(locations[i]),
-//       icon: 'http://maps.google.com/mapfiles/ms/micons/cabs.png',
-//       map: map
-//     });
-//     console.log(labels[i]);
-//     addInfo(marker, labels[i]);
-//   //}
-// }
-
 function newMarker(i) {
-
   marker = new google.maps.Marker({
     position: new google.maps.LatLng({lat:locations[i][0], lng: locations[i][1]}),
     icon: 'http://maps.google.com/mapfiles/ms/micons/cabs.png',
@@ -113,7 +78,6 @@ function newMarker(i) {
     
   });
   return marker;
-
 }
 
 function addInfo(marker, content){
@@ -132,3 +96,10 @@ function myFunction() {
   window.location='/login';
 }
 
+function toggleBounce() {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}

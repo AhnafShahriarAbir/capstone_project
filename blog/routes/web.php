@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/map', function () {
-    return view('map');
-});
+
+Route::get('/map','CarController@index'); 
+
 
 Route::get('/about', function () {
     return view('about');
