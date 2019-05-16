@@ -24,10 +24,9 @@
         </footer>
 
         </div>
-       
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-    <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfVh4DjXDehml8bNOj0d6ph58uOLQumpA&callback=initMap"> </script>
+       @yield('script')
     
-    @yield('script')
+    
+    
     </body>
 </html>

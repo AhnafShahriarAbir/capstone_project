@@ -1,4 +1,4 @@
-var map, marker, infoWindow
+
 var locations = [
   [-37.809389,144.9645 ,"A "],
   [-37.809489,144.9745 ,"B "],
@@ -18,23 +18,6 @@ var locations = [
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -37.809389, lng: 144.9645},
-    
-    zoom: 13
-    });
-    
-    infoWindow = new google.maps.InfoWindow;
-    
-    //geoLocation();
-  
-    for (var i = 0; i < locations.length; ++i) {
-      marker = newMarker(i);
-      addInfo(marker, locations[i][2]);
-      console.log(i);
-    }    
-  }
 
 
 function geoLocation(){
@@ -70,15 +53,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-function newMarker(i) {
-  marker = new google.maps.Marker({
-    position: new google.maps.LatLng({lat:locations[i][0], lng: locations[i][1]}),
-    icon: 'http://maps.google.com/mapfiles/ms/micons/cabs.png',
-    map: map,
-    
-  });
-  return marker;
-}
+
 
 function addInfo(marker, content){
   infowindow = new google.maps.InfoWindow({

@@ -68,13 +68,57 @@
 
 @section('script')
 
-	@foreach($cars->chunk(3) as $carChunk)
-    @foreach($carChunk as $car)
+  <script src="{{ asset('js/mapscript.js') }}" defer></script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfVh4DjXDehml8bNOj0d6ph58uOLQumpA&callback=initMap"> </script>
+    @foreach($cars as $car)
         <script type="text/javascript">
-          console.log("{{ $car->Make }}");
-          console.log("{{ $car->Latitude }}");
-          console.log("{{ $car->Longtitude }}");
+          
+        var lat = "{{ $car->Latitude }}"
+        var lng = "{{ $car->Longitude }}"
+        var content = "{{ $car->Make }}"
+        var map, marker, infoWindow
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -37.809389, lng: 144.9645},
+            
+            zoom: 13
+            });
+            
+            infoWindow = new google.maps.InfoWindow;
+            
+            //geoLocation();
+            marker = addMarker();
+            addInfo(marker, content)
+          }
+
+          function addMarker() {
+              marker = new google.maps.Marker({
+              position: new google.maps.LatLng({lat: parseFloat(lat), lng: parseFloat(lng)}),
+              icon: 'http://maps.google.com/mapfiles/ms/micons/cabs.png',
+              map: map,
+
+              });
+            return marker;
+          }
+          
+          function addInfo(marker, content){
+            infowindow = new google.maps.InfoWindow({
+              content: '<p> Title '+
+              content +
+              '</p> ' +
+              '<button onclick="myFunction();">Book</button>'
+            });
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
+            });
+          }
+
+          //addInfo(marker, "{{ $car->Make }}")
         </script>
-		@endforeach
-	@endforeach
+
+	 @endforeach
+
 @endsection
+

@@ -42,24 +42,19 @@ Route::get('/carinfo/{id}','CarController@show');
 
 Route::get('/bookcar','BookCarController@index');
 
+Route::get('/checkout', [
+  'uses' => 'BookCarController@getCheckout',
+  'as' => 'checkout',
+  'middleware' => 'auth'
+]);
 
+Route::post('/checkout', [
+  'uses' => 'BookCarController@postCheckout',
+  'as' => 'checkout',
+  'middleware' => 'auth'
+]);
 
 Auth::routes();
-//Route::post('/store','Auth\RegisterController@create');
-
-// Route::get('/login', function () {
-//     return view('auth.login');
-// });
-
-
-// // route to process the form
-// Route::post('login', array(
-//   'uses' => 'MainController@doLogin'
-// ));
-// Route::get('logout', array(
-//   'uses' => 'MainController@doLogout'
-// ));
-
 
 Route::get('/', [
   'uses' => 'CarController@Index',
