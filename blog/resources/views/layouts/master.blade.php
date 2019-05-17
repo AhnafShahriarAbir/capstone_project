@@ -19,14 +19,14 @@
 
         <br/>
         <br/>
+    
+       
+       @yield('script')
+    
         <footer class="row">
             @include('inc.footer')
         </footer>
-
-        </div>
-       @yield('script')
-    
-    
+     </div>
     
     </body>
 </html>

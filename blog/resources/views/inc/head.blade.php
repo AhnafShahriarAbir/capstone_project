@@ -22,3 +22,4 @@
     crossorigin="anonymous"></script>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="{{ URL::to('js/checkout.js') }}"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
