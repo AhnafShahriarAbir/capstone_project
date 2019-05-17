@@ -1,18 +1,21 @@
 @extends('layouts.master')
 
+
 @section('content')
     <div class="row mt-5">
         <div class="col">
           <div class="clearfix">
               <h1 class="float-left">Checkout</h1>
-              <h2 class="float-right text-success">AU$ total</h2>
+              <h2 class="float-right text-success">AU$ Total</h2>
               <h2 class="float-right">Total Amount: &nbsp</h2>
             </div>
             <hr>
-
-            <div id="charge-error" class="alert alert-danger {{ !Session::has('error') ? 'd-none' : ''  }}">
+            @if($errors->any())
+            <div id="charge-error" class="alert alert-danger {{ !Session::has('error') ? 'display-none' : ''  }}">
                 {{ Session::get('error') }}
             </div>
+            @endif
+            
 
             <form action="{{ route('checkout') }}" method="post" id="checkout-form">
 
@@ -66,4 +69,5 @@
         </div>
     </div>
 @endsection
+
 

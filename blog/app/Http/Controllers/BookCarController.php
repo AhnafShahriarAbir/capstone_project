@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Stripe\Stripe;
 use Stripe\Charge;
 use App\Http\Controllers\Controller;
+use App\Car;
 
 class BookCarController extends Controller
 {
@@ -26,43 +27,22 @@ class BookCarController extends Controller
     }
     public function postCheckout(Request $request)
   {
-   
-    // Set your secret key: remember to change this to your live secret key in production
-    // See your keys here: https://dashboard.stripe.com/account/apikeys
+    $cars = Car::all();
+    
     \Stripe\Stripe::setApiKey('sk_test_4oRK0ymvlZsGau97drQf15E200b49MRDaS');
 
-    // Token is created using Checkout or Elements!
-    // Get the payment token ID submitted by the form:
+    try {
+      $charge = Charge::create(array(
+        "amount" => $cars->Price*100,
+        "currency" => "aud",
+        "source" => $request->input('stripeToken'),
+        "description" => "Charge for test"
+        ));
 
-            // Create a Customer:
-    $customer = \Stripe\Customer::create([
-        'source' => 'tok_mastercard',
-        'email' => 'paying.user@example.com',
-    ]);
+    } catch(\Exception $e) {
+      return redirect()->route('checkout')->with('error' , $e->getMessage());
+    }
 
-    // Charge the Customer instead of the card:
-    $charge = \Stripe\Charge::create([
-        'amount' => 1000,
-        'currency' => 'usd',
-        'customer' => 1,
-    ]);
-
-    // YOUR CODE: Save the customer ID and other info in a database for later.
-
-    // When it's time to charge the customer again, retrieve the customer ID.
-    $charge = \Stripe\Charge::create([
-        'amount' => 1500, // $15.00 this time
-        'currency' => 'usd',
-        'customer' => 1, // Previously stored, then retrieved
-    ]);
-
-    $token = $_POST['stripeToken'];
-    $charge = \Stripe\Charge::create([
-        'amount' => 999,
-        'currency' => 'aud',
-        'description' => 'Example charge',
-        'source' => $token,
-    ]);
     //Session::forget('cart');
     return redirect()->route('home')->with('success','Successfully purchased. Thanks!');
   }
