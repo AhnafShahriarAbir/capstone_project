@@ -2,6 +2,14 @@
 
 @section('content')
 
+    <b>Mode of Travel: </b>
+    <select id="mode">
+      <option value="DRIVING">Driving</option>
+      <option value="WALKING">Walking</option>
+      <option value="BICYCLING">Bicycling</option>
+      <option value="TRANSIT">Transit</option>
+    </select>
+
 <div class="iframe-container" >
 
 	<div id="map">
@@ -72,9 +80,12 @@
   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
   
   <script type="text/javascript">
-  var map, marker;
+  var map, marker, marker1, marker2;
+  var geoMarker2;
   lastWindow=null;
-  
+  var loc;
+  var pos;
+var directionsDisplay,directionsService;
 
   function initMap() {
           map = new google.maps.Map(document.getElementById('map'), {
@@ -82,36 +93,64 @@
           
           zoom: 13
           });
-          //geoLocation();
+           var infowindow = new google.maps.InfoWindow();
           
-          @foreach($cars as $car)
-              var lat = "{{ $car->Latitude }}";
-              var lng = "{{ $car->Longitude }}";
-              var make = "{{ $car->Make }}"
-              var model = "{{ $car->Model }}"
-              var year = "{{ $car->Year }}"
-              var price = "{{ $car->Price }}"
+           marker1 = addMarker("-37.809389","144.9645",map);
+           var content = "Car: A" 
+          addContent(map, marker1, content, infowindow);
 
-              var MarkerContent  = '<div id="content">'+
-                  '<div id="siteNotice">'+
-                  '</div>'+
-                  '<h1 id="firstHeading" class="firstHeading">'+make +' '+ model +' '+ year+'</h1>' +
-                  '<div id="bodyContent">'+
-                  '<h3><b> Price</b> : $'+ price +'<h3>' +
-                  '<button onclick="myFunction()">Book</button>'+
-                  '</div>';
+           marker2 = addMarker("-37.806389","144.9865",map);
+           var content2 = "Car: B" 
+          
+          addContent(map, marker2, content2, infowindow);
+          directionsDisplay = new google.maps.DirectionsRenderer;
+          directionsService = new google.maps.DirectionsService;
+          
+          directionsDisplay.setMap(map);
+          
+          //geoLocation(infowindow, marker1);
 
-              var infowindow = new google.maps.InfoWindow();
+          
+          }
+
+          
+
+        
+
+
+
+          // @foreach($cars as $car)
+          //     var lat = "{{ $car->Latitude }}";
+          //     var lng = "{{ $car->Longitude }}";
+          //     var make = "{{ $car->Make }}"
+          //     var model = "{{ $car->Model }}"
+          //     var year = "{{ $car->Year }}"
+          //     var price = "{{ $car->Price }}"
+
+          //     var MarkerContent  = '<div id="content">'+
+          //         '<div id="siteNotice">'+
+          //         '</div>'+
+          //         '<h1 id="firstHeading" class="firstHeading">'+make +' '+ model +' '+ year+'</h1>' +
+          //         '<div id="bodyContent">'+
+          //         '<h3><b> Price</b> : $'+ price +'<h3>' +
+          //         '<button onclick="myFunction()">Book</button>'+
+          //         '<button onclick="getDirection()">Get Direction</button>'+
+          //         '</div>';
+
+          //     var infowindow = new google.maps.InfoWindow();
 
               
-              marker = addMarker(lat,lng,map);
+          //     marker = addMarker(lat,lng,map);
 
-              var content = "Car: " + MarkerContent 
-              addContent(map, marker, content, infowindow);
-              geoLocation(infowindow);
+          //     var content = "Car: " + MarkerContent 
+          //     addContent(map, marker, content, infowindow);
+          //     geoLocation(infowindow);
+          //   @endforeach
 
-          @endforeach
-    }
+     
+            
+  
+    
         
         
       //   function hideAllInfoWindows(map) {
