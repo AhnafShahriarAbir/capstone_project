@@ -110,49 +110,35 @@ var directionsDisplay,directionsService;
           
           //geoLocation(infowindow, marker1);
 
-          
-          }
+          @foreach($cars as $car)
+              var lat = "{{ $car->Latitude }}";
+              var lng = "{{ $car->Longitude }}";
+              var make = "{{ $car->Make }}"
+              var model = "{{ $car->Model }}"
+              var year = "{{ $car->Year }}"
+              var price = "{{ $car->Price }}"
 
-          
+              var MarkerContent  = '<div id="content">'+
+                  '<div id="siteNotice">'+
+                  '</div>'+
+                  '<h1 id="firstHeading" class="firstHeading">'+make +' '+ model +' '+ year+'</h1>' +
+                  '<div id="bodyContent">'+
+                  '<h3><b> Price</b> : $'+ price +'<h3>' +
+                  '<button onclick="myFunction()">Book</button>'+
+                  '<button onclick="getDirection()">Get Direction</button>'+
+                  '</div>';
 
-        
-
-
-
-          // @foreach($cars as $car)
-          //     var lat = "{{ $car->Latitude }}";
-          //     var lng = "{{ $car->Longitude }}";
-          //     var make = "{{ $car->Make }}"
-          //     var model = "{{ $car->Model }}"
-          //     var year = "{{ $car->Year }}"
-          //     var price = "{{ $car->Price }}"
-
-          //     var MarkerContent  = '<div id="content">'+
-          //         '<div id="siteNotice">'+
-          //         '</div>'+
-          //         '<h1 id="firstHeading" class="firstHeading">'+make +' '+ model +' '+ year+'</h1>' +
-          //         '<div id="bodyContent">'+
-          //         '<h3><b> Price</b> : $'+ price +'<h3>' +
-          //         '<button onclick="myFunction()">Book</button>'+
-          //         '<button onclick="getDirection()">Get Direction</button>'+
-          //         '</div>';
-
-          //     var infowindow = new google.maps.InfoWindow();
+              var infowindow = new google.maps.InfoWindow();
 
               
-          //     marker = addMarker(lat,lng,map);
+              marker = addMarker(lat,lng,map);
 
-          //     var content = "Car: " + MarkerContent 
-          //     addContent(map, marker, content, infowindow);
-          //     geoLocation(infowindow);
-          //   @endforeach
-
-     
-            
-  
-    
-        
-        
+              var content = "Car: " + MarkerContent 
+              addContent(map, marker, content, infowindow);
+             
+            @endforeach
+          
+          }
       //   function hideAllInfoWindows(map) {
       //     markers.forEach(function(marker) {
       //     marker.infowindow.close(map, marker);

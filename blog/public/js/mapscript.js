@@ -3,7 +3,7 @@ var loc2 = [];
 var geoMarker;
 var latitude, longitude;
 
-function geoLocation(infowindow, marker1){
+function geoLocation(infowindow, marker){
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       pos = {
@@ -21,7 +21,7 @@ function geoLocation(infowindow, marker1){
       //marker.addListener('click', toggleBoune);
 
       map.setCenter(pos);
-      calculateAndDisplayRoute(directionsService, directionsDisplay, geoMarker, marker1 );
+      calculateAndDisplayRoute(directionsService, directionsDisplay, geoMarker, marker);
           document.getElementById('mode').addEventListener('change', function () {
             calculateAndDisplayRoute(directionsService, directionsDisplay, geoMarker, marker1);
       });
