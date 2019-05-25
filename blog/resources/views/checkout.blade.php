@@ -68,8 +68,8 @@
             </form>
         </div>
     </div>
+    @section('script')
+        <script>paypal.Buttons().render('body');</script>
+    @endsection
 @endsection
 
-@section('script')
-    <script>paypal.Buttons().render('body');</script>
-@endsection

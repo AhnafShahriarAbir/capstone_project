@@ -10,7 +10,7 @@
             <div>
                 <h1>Car Details:<h2>
                    <p> {{ $car->Make }} {{ $car->Model }} {{ $car->Year}} </p>
-                   <p>Price(per hour): {{ $car->Price}} </p>
+                   <p>Price(per hour): $ {{ $car->Price}} </p>
             </div>
         @endforeach
 
@@ -19,17 +19,16 @@
         <div>
             <h1>User Details:<h2>
             @foreach ($users as $user)
-                        {{ $user->name }}
-             @endforeach
-            <form>
+             
+            <form method="POST" action="{{ route('register') }}">
 
                 <div class="form-group">
                     <label for="username">User Name</label>
-                    <input type="text" class="form-control" id="username" aria-describedby="username" placeholder="user name here">
+                    <input type="text" class="form-control" id="username" aria-describedby="username" placeholder="{{ $user->name }}">
                 </div>
                 <div class="form-group">
-                    <label for="useremail">Email address</label>
-                    <input type="email" class="form-control" id="useremail" aria-describedby="emailHelp" placeholder="Enter email">
+                    <label for="useremail">User Email</label>
+                    <input type="email" class="form-control" id="useremail" aria-describedby="emailHelp" placeholder="{{ $user->email }}">
                     
                 </div>
                 <div class="form-group">
@@ -38,6 +37,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+            @endforeach
         </div>
     </div>
 </div>

@@ -8,12 +8,12 @@
         <span class="icon-bar"></span> 
         <span class="icon-bar"></span> 
       </button>
-      <a class="navbar-brand" href="/">Car Share</a>
+      <a class="navbar-brand" href="/home">Car Share</a>
     </div>
 
     <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/">Home</a></li>
+      <li class="active"><a href="/home">Home</a></li>
       <li><a href="/map">Map</a></li>
       <li><a href="/cars">Cars</a></li>
       <li><a href="/bookcar">Book car</a></li>
@@ -40,6 +40,7 @@
               </a>
               
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <p><a class="dropdown-item" href="{{ route('user.profile') }}">History</a></p>
                   <a class="dropdown-item" href="{{ route('logout') }}"
                      onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">

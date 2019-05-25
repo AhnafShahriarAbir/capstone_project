@@ -36,10 +36,10 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct( Request $request)
+    public function __construct()
     {   
 		$user = User::first();
-		$request->session()->push('user', $user);
+		session()->push('user', $user);
 
         
         $this->middleware('guest')->except('logout');

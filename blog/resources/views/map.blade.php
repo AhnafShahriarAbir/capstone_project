@@ -1,7 +1,7 @@
 @extends('Layouts.master')
 
 @section('content')
-
+<div>
     <b>Mode of Travel: </b>
     <select id="mode">
       <option value="DRIVING">Driving</option>
@@ -9,7 +9,8 @@
       <option value="BICYCLING">Bicycling</option>
       <option value="TRANSIT">Transit</option>
     </select>
-
+<div>
+  <br>
 <div class="iframe-container" >
 
 	<div id="map">
@@ -19,8 +20,9 @@
 	
 </div>
 @foreach($cars->chunk(2) as $carChunk)
-    <div class="row">
+     <div class="row">
       @foreach($carChunk as $car)
+     
         <div class="col-md-4">
           <div class="card mb-4 ">
             <div class="thumbnail">
@@ -32,14 +34,12 @@
               <!--<p class="card-text description">{{ $car->description }}</p>-->
               <div class="clearfix">
                 <button class="btn btn-primary float-right" data-toggle="modal" data-target="#carModal-{{ $car->id }}">View</button>
-                <a href="['id' => $car->id]) }}" class="btn btn-success ml-1 float-right">Book</a>
-                
+                <a href="car/{{ $car->id }}" class="btn btn-success ml-1 float-right">Book</a>
               </div>
             </div>
           </div>
         </div>
-
-
+          
         <div class="modal fade" tabindex="-1" id="carModal-{{ $car->id }}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -67,6 +67,7 @@
             </div>
           </div>
         </div>
+      
       @endforeach
     </div>
   @endforeach

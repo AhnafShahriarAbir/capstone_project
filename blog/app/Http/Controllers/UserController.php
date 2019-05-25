@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Session;
-
+use DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
@@ -71,12 +71,15 @@ class UserController extends Controller
     }
     
     public function getProfile() {
-         $orders = Auth::user()->orders;
-        $orders->transform(function($order, $key) {
-            $order->cart = unserialize($order->cart);
-            return $order;
-        });
-        return view('user.profile', ['orders' => $orders]);
+        $user_id = 2;
+        $booked_car =  DB::table('book_cars') ->where ('id','=',$user_id)
+                                             ->pluck('id');;
+        
+        $stime = DB::table('book_cars') ->where ('id','=',$user_id)
+                                             ->pluck('start_time');;       
+
+        $cars = DB::table('cars')-> where ('id','=',$booked_car)->get();
+        return view('user.profile', ['booked_cars' =>$cars], ['start_time'=> $stime]);
     }
 }
     

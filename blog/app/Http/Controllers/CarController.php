@@ -52,15 +52,21 @@ class CarController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $user_id = Session::get('user')[0];
-        print_r($user_id);
+       // $user_id = Session::get('user')[0];
+       
+        $user = Session::get('user')[0];
+        print_r($user);
         $cars = DB::table('cars')-> where ('id','=',$id)->get();
         
-        $users = User::all();
-        // $users = DB::table('users')-> where ('id','=',$user_id)->get();
+        $users = DB::table('users')-> where ('id','=',1)->get();
        
+        // DB::table('book_cars')->insert(
+        //     ['cars_id' => $id, 'users_id' => 2,
+        //     'start_time' => now()
+        //     ]
+        // );
         return view('carinfo',['cars'=>$cars], ['users'=> $users]);
     }
 

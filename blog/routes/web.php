@@ -3,11 +3,12 @@
 use App\BookCar;
 use Illuminate\Support\Facades\Input;
 
-Route::get('/', function () {
-    return view('home');
-});
 
-Route::get('/map','CarController@index'); 
+
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'CarController@index')->name('home');
+Route::get('/map', 'CarController@index');
+
 
 
 Route::get('/about', function () {
@@ -38,14 +39,44 @@ Route::get('/checkout', [
   'middleware' => 'auth'
 ]);
 
-
 Auth::routes();
+
+Route::get('/signup', [
+      'uses' => 'UserController@getSignup',
+      'as' => 'user.signup',
+      'middleware' => 'guest'
+    ]);
+
+Route::post('/signup', [
+  'uses' => 'UserController@postSignup',
+  'as' => 'user.signup',
+  'middleware' => 'guest'
+]);
+
+Route::get('/signin', [
+  'uses' => 'UserController@getSignin',
+  'as' => 'user.signin',
+  'middleware' => 'guest'
+]);
+Route::post('/signin', [
+  'uses' => 'UserController@postSignin',
+  'as' => 'user.signin',
+  'middleware' => 'guest'
+]);
+
+ Route::get('/logout', [
+      'uses' => 'UserController@getLogout',
+      'as' => 'user.logout'
+    ]);
+
+Route::get('/profile', [
+      'uses' => 'UserController@getProfile',
+      'as' => 'user.profile'
+    ]);
+
+
 
 // Route::get('/', [
 //   'uses' => 'CarController@Index',
 //   'as' => 'car.index'
 // ]);
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'CarController@index');
-Route::get('/home', 'CarController@index');

@@ -1,9 +1,5 @@
 @extends('Layouts.master')
 
-use App\Http\Requests;
-use Session;
-
-
 @section('content')
 <h1>Book cars</h1>
 
