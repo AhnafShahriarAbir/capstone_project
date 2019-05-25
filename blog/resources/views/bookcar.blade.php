@@ -1,5 +1,7 @@
 @extends('Layouts.master')
 
+use App\Http\Requests;
+use Session;
 
 
 @section('content')

@@ -23,5 +23,5 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script src="{{ URL::to('js/checkout.js') }}"></script>
 <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfVh4DjXDehml8bNOj0d6ph58uOLQumpA&callback=initMap"> </script>
-    
+<script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
     

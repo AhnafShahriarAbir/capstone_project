@@ -8,6 +8,9 @@ use Stripe\Stripe;
 use Stripe\Charge;
 use App\Http\Controllers\Controller;
 use App\Car;
+use Session;
+use App\User;
+
 class CarController extends Controller
 {
     /**
@@ -18,10 +21,9 @@ class CarController extends Controller
     public function index()
     {
         $cars = Car::all();
-
         return view('map', ['cars' => $cars]);
     }
-
+  
     /**
      * Show the form for creating a new resource.
      *
@@ -49,10 +51,17 @@ class CarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
+        $user_id = Session::get('user')[0];
+        print_r($user_id);
         $cars = DB::table('cars')-> where ('id','=',$id)->get();
-        return view('carinfo',['cars'=>$cars]);
+        
+        $users = User::all();
+        // $users = DB::table('users')-> where ('id','=',$user_id)->get();
+       
+        return view('carinfo',['cars'=>$cars], ['users'=> $users]);
     }
 
     /**

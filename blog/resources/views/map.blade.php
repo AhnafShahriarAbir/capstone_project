@@ -24,7 +24,7 @@
         <div class="col-md-4">
           <div class="card mb-4 ">
             <div class="thumbnail">
-              <img class="card-img-top" src="{{ $car->imagePath }}" alt="...">
+              <img class="card-img-top" src="{{ $car->image }}" alt="...">
             </div>
             <div class="card-body">
               <h5 class="card-title">{{ $car->Make }} {{ $car->Model }}</h5>
@@ -52,7 +52,7 @@
               </div>
               <div class="modal-body">
                 <div class="thumbnail ">
-                  <img class="rounded float-left " src="{{ $car->imagePath }}" alt="...">
+                  <img class="rounded float-left " src="{{ $car->image }}" alt="...">
                   <div>
                     <h4 class="text-center">Description:</h4>
                     <hr>
@@ -85,58 +85,71 @@
   lastWindow=null;
   var loc;
   var pos;
+  var lat_lng;
+  var markers = [];
 var directionsDisplay,directionsService;
 
   function initMap() {
           map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -37.809389, lng: 144.9645},
-          
           zoom: 13
           });
            var infowindow = new google.maps.InfoWindow();
-          
+            var car_id = 1;
+            
+            var MarkerContent  = '<div id="content">'+
+                  '<div id="siteNotice">'+
+                  '</div>'+
+                  '<h1 id="firstHeading" class="firstHeading">'+car_id+'</h1>' +
+                  '<div id="bodyContent">'+
+                  '<h3><b> Price</b> : $ 50 <h3>' +
+                  `<button onclick="myFunction('` + car_id + `')">Book</button>` +
+                  '<button onclick="getDirection()">Get Direction</button>'+
+                  '</div>';
+
            marker1 = addMarker("-37.809389","144.9645",map);
            var content = "Car: A" 
-          addContent(map, marker1, content, infowindow);
+          addContent(map, marker1, MarkerContent, infowindow);
 
            marker2 = addMarker("-37.806389","144.9865",map);
            var content2 = "Car: B" 
           
-          addContent(map, marker2, content2, infowindow);
+          addContent(map, marker2, MarkerContent, infowindow);
+
           directionsDisplay = new google.maps.DirectionsRenderer;
           directionsService = new google.maps.DirectionsService;
           
           directionsDisplay.setMap(map);
-          
-          //geoLocation(infowindow, marker1);
+          //geoLocation(infowindow);
 
-          @foreach($cars as $car)
-              var lat = "{{ $car->Latitude }}";
-              var lng = "{{ $car->Longitude }}";
-              var make = "{{ $car->Make }}"
-              var model = "{{ $car->Model }}"
-              var year = "{{ $car->Year }}"
-              var price = "{{ $car->Price }}"
+          // @foreach($cars as $car)
+          //     var lat = "{{ $car->Latitude }}";
+          //     var lng = "{{ $car->Longitude }}";
+          //     var make = "{{ $car->Make }}"
+          //     var model = "{{ $car->Model }}"
+          //     var year = "{{ $car->Year }}"
+          //     var price = "{{ $car->Price }}"
 
-              var MarkerContent  = '<div id="content">'+
-                  '<div id="siteNotice">'+
-                  '</div>'+
-                  '<h1 id="firstHeading" class="firstHeading">'+make +' '+ model +' '+ year+'</h1>' +
-                  '<div id="bodyContent">'+
-                  '<h3><b> Price</b> : $'+ price +'<h3>' +
-                  '<button onclick="myFunction()">Book</button>'+
-                  '<button onclick="getDirection()">Get Direction</button>'+
-                  '</div>';
+          //     var MarkerContent  = '<div id="content">'+
+          //         '<div id="siteNotice">'+
+          //         '</div>'+
+          //         '<h1 id="firstHeading" class="firstHeading">'+make +' '+ model +' '+ year+'</h1>' +
+          //         '<div id="bodyContent">'+
+          //         '<h3><b> Price</b> : $'+ price +'<h3>' +
+          //         `<button onclick="myFunction('` +  make + model + year +`','` + price +  `')">Book</button>` +
+          //         '<button onclick="getDirection()">Get Direction</button>'+
+          //         '</div>';
 
-              var infowindow = new google.maps.InfoWindow();
+          //     var infowindow = new google.maps.InfoWindow();
 
               
-              marker = addMarker(lat,lng,map);
-
-              var content = "Car: " + MarkerContent 
-              addContent(map, marker, content, infowindow);
-             
-            @endforeach
+          //     marker = addMarker(lat,lng,map);
+          //     markers.push(marker);
+          //     var content = "Car: " + MarkerContent 
+          //     addContent(map, marker, content, infowindow);
+          //    geoLocation(infowindow);
+            
+          //   @endforeach
           
           }
       //   function hideAllInfoWindows(map) {

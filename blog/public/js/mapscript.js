@@ -1,9 +1,13 @@
 var pos;
 var loc2 = [];
 var geoMarker;
-var latitude, longitude;
+var lat_lng;
+var car;
+var price;
 
-function geoLocation(infowindow, marker){
+var pos_marker;
+
+function geoLocation(infowindow){
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       pos = {
@@ -21,10 +25,7 @@ function geoLocation(infowindow, marker){
       //marker.addListener('click', toggleBoune);
 
       map.setCenter(pos);
-      calculateAndDisplayRoute(directionsService, directionsDisplay, geoMarker, marker);
-          document.getElementById('mode').addEventListener('change', function () {
-            calculateAndDisplayRoute(directionsService, directionsDisplay, geoMarker, marker1);
-      });
+      
 
     }, function () {
       handleLocationError(true, infowindow, map.getCenter());
@@ -56,18 +57,31 @@ function addMarker(lat, lng, map) {
 
 function addContent(map, marker, content, infowindow) {
   google.maps.event.addListener(marker, 'click', (function (marker, content, infowindow) {
+   
+  
+    
     return function () {
       if (lastWindow) lastWindow.close();
       infowindow.setContent(content);
       infowindow.open(map, marker);
-      lastWindow = infowindow;
-      geoLocation(infowindow, marker)
+      lastWindow = infowindow; 
+      lat_lng = {
+        lat: marker.getPosition().lat(),
+        lng: marker.getPosition().lng()
+      };
+
+      // getDirection(marker);
+   
+        // geoLocation(infowindow, marker);
+      
     };
+    
   })(marker, content, infowindow));
 }
 
-function myFunction() {
-  window.location='/login';
+function myFunction(car_id) {
+  console.log(car_id);
+  window.location ='/car/'+car_id;
 }
 
 function toggleBounce() {
@@ -78,15 +92,12 @@ function toggleBounce() {
   }
 }
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay, marker1, marker2) {
-
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+  console.log(lat_lng);
   var selectedMode = document.getElementById('mode').value;
   directionsService.route({
-    origin: marker1.getPosition(),  // Haight.
-    destination: marker2.getPosition(),  // Ocean Beach.
-    // Note that Javascript allows us to access the constant
-    // using square brackets and a string value as its
-    // "property."
+    origin: pos,
+    destination: lat_lng,  
     travelMode: google.maps.TravelMode[selectedMode]
   }, function (response, status) {
     if (status == 'OK') {
@@ -96,4 +107,11 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, marker1,
     }
   });
 
+}
+
+function getDirection() {
+  calculateAndDisplayRoute(directionsService, directionsDisplay);
+          document.getElementById('mode').addEventListener('change', function () {
+            calculateAndDisplayRoute(directionsService, directionsDisplay);
+      });
 }

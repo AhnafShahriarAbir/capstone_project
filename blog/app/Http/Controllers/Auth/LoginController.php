@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
+use App\User;
 
+use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     /*
@@ -25,6 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
+    
     protected $redirectTo = '/home';
 
     /**
@@ -32,8 +36,13 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct( Request $request)
+    {   
+		$user = User::first();
+		$request->session()->push('user', $user);
+
+        
         $this->middleware('guest')->except('logout');
     }
+    
 }

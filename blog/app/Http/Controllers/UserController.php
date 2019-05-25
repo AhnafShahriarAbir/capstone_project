@@ -7,6 +7,10 @@ use App\User;
 use Auth;
 use Session;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
+
+
 class UserController extends Controller
 {
     public function index()
@@ -15,7 +19,7 @@ class UserController extends Controller
     }
 
     public function getSignup() {
-        return view('auth.register');
+        return view('user.signup');
     }
 
     public function postSignup(Request $request) {

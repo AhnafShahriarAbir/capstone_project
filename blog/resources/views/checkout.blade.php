@@ -70,4 +70,6 @@
     </div>
 @endsection
 
-
+@section('script')
+    <script>paypal.Buttons().render('body');</script>
+@endsection
