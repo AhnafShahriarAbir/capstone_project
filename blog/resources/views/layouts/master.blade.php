@@ -57,15 +57,17 @@
             
             @yield('content')
               
-             @yield('script')
-            @include('inc.footer')
+            
        
         <br/>
         <br/>
+        @include('inc.footer')
     
         </div>
-      
-    
+       
+      @yield('script')
+
+         
       
      </div>
     

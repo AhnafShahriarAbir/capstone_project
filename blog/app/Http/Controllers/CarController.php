@@ -57,10 +57,10 @@ class CarController extends Controller
        // $user_id = Session::get('user')[0];
        
         $user = Session::get('user')[0];
-        print_r($user);
+       
         $cars = DB::table('cars')-> where ('id','=',$id)->get();
         
-        $users = DB::table('users')-> where ('id','=',1)->get();
+        $users = DB::table('users')-> where ('id','=',4)->get();
        
         // DB::table('book_cars')->insert(
         //     ['cars_id' => $id, 'users_id' => 2,

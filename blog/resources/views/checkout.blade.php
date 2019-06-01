@@ -65,11 +65,11 @@
                 </div>
                 {{ csrf_field() }}
                 <button type="submit" class="btn btn-lg btn-block btn-success">Buy now</button>
+
+        
+  
             </form>
         </div>
     </div>
-    @section('script')
-        <script>paypal.Buttons().render('body');</script>
-    @endsection
+    
 @endsection
-

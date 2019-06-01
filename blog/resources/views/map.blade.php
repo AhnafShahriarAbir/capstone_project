@@ -96,20 +96,35 @@ var directionsDisplay,directionsService;
           zoom: 13
           });
            var infowindow = new google.maps.InfoWindow();
-            var car_id = 1;
+            var car_id = 2;
             
-            var MarkerContent  = '<div id="content">'+
-                  '<div id="siteNotice">'+
+            var image = '<IMG BORDER="2" ALIGN="center" SRC="https://carsales.pxcrush.net/carsales/car/dealer/f17e8f7e61576927bad189aa1139aa72.jpg?pxc_method=crop&pxc_size=160%2c105">' 
+
+            @foreach($cars as $car)
+            var MarkerContent  =
+
+                 '<div id="content">'+
+                  image+
+                  '<div id="siteNotice">'+  
                   '</div>'+
-                  '<h1 id="firstHeading" class="firstHeading">'+car_id+'</h1>' +
+                   
+                  '</br>'+
+                  
+                  '</h1>' +'<h1 id="firstHeading" class="firstHeading">'+
+                 
+                  'Suzuki Swift'+'</h1>' +
+
                   '<div id="bodyContent">'+
                   '<h3><b> Price</b> : $ 50 <h3>' +
+                 
+                  
                   `<button onclick="myFunction('` + car_id + `')">Book</button>` +
                   '<button onclick="getDirection()">Get Direction</button>'+
                   '</div>';
+                @endforeach
 
            marker1 = addMarker("-37.809389","144.9645",map);
-           var content = "Car: A" 
+           
           addContent(map, marker1, MarkerContent, infowindow);
 
            marker2 = addMarker("-37.806389","144.9865",map);
@@ -121,7 +136,7 @@ var directionsDisplay,directionsService;
           directionsService = new google.maps.DirectionsService;
           
           directionsDisplay.setMap(map);
-          //geoLocation(infowindow);
+          geoLocation(infowindow);
 
           // @foreach($cars as $car)
           //     var lat = "{{ $car->Latitude }}";
