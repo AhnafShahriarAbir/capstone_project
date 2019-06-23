@@ -4,7 +4,7 @@ php:
   - 7.1.19
 
 before_script:
-  - cp .env.travis .env
+  - cp blog/.env.travis blog.env
   - mysql -e 'create database blog;'
   - composer self-update
   - composer install --no-interaction
